@@ -52,11 +52,14 @@ Dans la partie principale de la page :
 
     <!-- INCLUSION DU JS-->
     <script>
-        let buttonToggleRectangleElt=document.getElementById('toggle-rectangle');
-        let rectangleElt=document.getElementsByClassName("rectangle")[0];
+        // 1 - selectionner tous les élément html nécessaires à l'interaction
 
-// exemple (click, dblclick, mouseover, mouseenter, mouseout, mousemove / keydown, keyup)
+        //let buttonToggleRectangleElt=document.getElementById('toggle-rectangle');
+        let buttonToggleRectangleElt=document.querySelector('#toggle-rectangle');
+        //let rectangleElt=document.getElementsByClassName("rectangle")[0];
+        let rectangleElt=document.querySelector('div.rectangle');
 
+        //2 - fonction d'action modifiant le DOM        
         function hideUnHide() {
             rectangleElt.classList.toggle('hide');
         }
@@ -73,9 +76,9 @@ Dans la partie principale de la page :
         function toggleGood () {
             rectangleElt.classList.toggle('good');            
         }
-
         
-
+        //3 - écouteur d'evt sur elmt HTML
+        // exemple (click, dblclick, mouseover, mouseenter, mouseout, mousemove / keydown, keyup)
         buttonToggleRectangleElt.addEventListener('click', hideUnHide)
         rectangleElt.addEventListener('mouseover',applyImportant);
         rectangleElt.addEventListener('mouseout',backToNormal);
