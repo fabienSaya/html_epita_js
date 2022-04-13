@@ -1,0 +1,86 @@
+<!--
+## Enoncé
+
+Construire un programme affichant un rectangle de couleur qui réagit à différentes interactions avec la souris de l'utilisateur.
+
+## Consignes
+
+### HTML
+
+Dans l'en-tête de la page :
+- Créer un bouton (*id : toggle-rectangle*) ayant pour intitulé "Cacher / Afficher le rectangle".
+
+Dans la partie principale de la page :
+- Créer une balise **div** vide (*class : rectangle*) pour le rectangle.
+
+### CSS
+- Le rectangle est bleu (*royalblue*), de taille 400x300 pixels et possède des coins arrondis.
+- Lorsqu'on applique la classe *good* en plus au rectangle, il devient vert (*limegreen*).
+- Lorsqu'on applique la classe *important* en plus au rectangle, il devient rouge (*firebrick*).
+
+### Interactions
+- Quand on clique sur le bouton *toggle-rectangle*, cela cache ou affiche le rectangle.
+- Quand la souris se déplace à l'intérieur du rectangle il devient rouge; 
+  il reprend sa couleur originale quand la souris n'est plus dedans.
+- Quand on double-clique sur le rectangle il devient vert.
+-->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Interactions souris</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Interactions souris</h1>
+    <ul>
+        <li>Quand on clique sur le bouton *toggle-rectangle*, cela cache ou affiche le rectangle (click)</li>
+        <li>Quand la souris se déplace à l'intérieur du rectangle il devient rouge (mouseover)</li>
+        <li>il reprend sa couleur originale quand la souris n'est plus dedans. (mouseout)</li>
+        <li>Quand on double-clique sur le rectangle il devient vert (dblclick)</li>
+    </ul>
+    
+
+    <div class="container">
+        <button id="toggle-rectangle">cacher/afficher le rectangle</button>
+
+        <div class="rectangle"></div>
+
+    </div>
+
+
+    <!-- INCLUSION DU JS-->
+    <script>
+        let buttonToggleRectangleElt=document.getElementById('toggle-rectangle');
+        let rectangleElt=document.getElementsByClassName("rectangle")[0];
+
+// exemple (click, dblclick, mouseover, mouseenter, mouseout, mousemove / keydown, keyup)
+
+        function hideUnHide() {
+            rectangleElt.classList.toggle('hide');
+        }
+
+        function applyImportant () {
+            rectangleElt.classList.add('important');
+        }
+
+        function backToNormal () {
+            rectangleElt.classList.remove('important');
+            rectangleElt.classList.remove('good');
+        }
+
+        function toggleGood () {
+            rectangleElt.classList.toggle('good');            
+        }
+
+        
+
+        buttonToggleRectangleElt.addEventListener('click', hideUnHide)
+        rectangleElt.addEventListener('mouseover',applyImportant);
+        rectangleElt.addEventListener('mouseout',backToNormal);
+        rectangleElt.addEventListener('dblclick',toggleGood);
+    
+    </script>
+</body>
+</html>
