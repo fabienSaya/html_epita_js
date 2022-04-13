@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><!DOCTYPE html>
+<html>
+<head>
+	<title>ES6-les nouveautés: l'opérateur de décomposition spread ...</title>
+</head>
+<body>
+
+<script>
+	/*
+		L'OPERATEUR SPREAD
+		Définition : il éclate un Array pour le transformer en valeur libre
+		Cet opérateur est utilisable dans plusieurs cas
+	*/
+	/*
+		1 DANS LE CONTEXTE D'UN ARRAY
+	*/
+	
+	let legumes = ['Carottes', 'Pommes de terre'];
+	let fruits = ['fraises', 'bananes', 'Oranges', 'Framboises'];
+	let fruits2 = ['citrons', 'Oranges'];
+
+	// Exemple 1: pour copier un tableau
+	let fruits3 = [...fruits]; 
+	console.log(fruits3);
+
+	// Exemple 2: pour remplacer les méthodes push() et unshift()
+	fruits = ["Goyave", ...fruits, "Papaye"];
+	console.log(fruits);
+	/*
+	NB: Il y a une différence avec unshift() et push() : ici, on crée un nouveau tableau qui est affecté à fruits, le tableau original de arr1 n'est pas modifié "sur place".
+	*/
+
+	// Exemple 2: Pour concaténer plusieurs tableaux en 1 seul
+	// EN JS ES5: let nouveauTableau = arr1.concat(arr2);
+	fruits = [...fruits, ...fruits2];
+	console.log(fruits);
+	// Particularité 
+	// L'opérateur spread crée une nouvelle référence
+
+
+	/*
+		- L'opérateur spread : éclate un Array pour le transformer en valeurs libres
+		- Les paramètres rest : réunit des valeurs libres dans un Array
+		- Les 2 syntaxes sont identiques : ... / C'est le contexte dans lequel on utilise cette syntaxe qui définira si c'est un opérateur spread ou des paramètres rest
+
+	*/
+
+
+	/*
+		2 DANS LES CONTEXTE D'UNE FONCTION
+		...nomDeVariable: est un paramètre rest
+		Les paramètres rest réunissent des valeurs libres (passées lors de l'exécution) dans un array récupérable dans la fonction
+	*/
+	function additionner(...numbers) {
+		console.log(numbers)
+		let result=0;
+		for(let number of numbers) {
+			result=result+number
+		}
+		return result;
+	}
+	additionner(1,5,7,12);
+
+
+	/*
+		3 DANS LES CONTEXTE D'UN OBJET
+	*/
+
+
+
+	
+</script>
+
+
+</body>
+</html>

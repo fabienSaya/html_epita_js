@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <title>Parametre rest</title>
+</head>
+<body>
+    
+<script>
+function add(...nb) {
+    let result=0;
+    for (let index = 0; index < nb.length; index++) {
+        const element = nb[index];
+        result+=element;
+    }
+    console.log(result);
+    return result;
+}
+
+add(1,2,3,50,43);
+
+
+
+</script>
+
+
+
+</body>
+</html>

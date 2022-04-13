@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L'objet via le constructeur et le prototype : JS ES5</title>
+</head>
+<body>
+
+<script>
+	/* 
+	** Pour créer l'équivalent d'une class en JS ES5 on déclare :,
+	** 1 une fonction constructeur :
+	** 2 des méthodes que l'on place dans le prototype
+	** Avantage du prototype : les méthodes ne sont stockées qu'une fois en mémoire et non pour chaque objet que l'on créera ultérieurement
+	*/ 
+    // 1 on déclare une fonction constructeur
+	function User(firstname, lastname, email) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+
+	// 2 on crée des méthodes dans le prototype
+	User.prototype.printDetails = function() {
+		console.log(this.firstname + " " + this.lastname);
+		console.log("Email: " + this.email);
+	}
+
+	// on peut instancier notre objet et utiliser ses méthodes
+	let steve = new User("Steve", "Jobs", "steve.jobs@apple.com")
+	steve.printDetails();
+
+
+	
+</script>
+</body>
+</html>

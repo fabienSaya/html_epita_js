@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L'objet via les class - les accesseurs : JS ES6</title>
+</head>
+<body>
+
+<script>
+	/**************************************************************************
+	**************************************************************************
+	LES ACCESSEURS GET ET SET
+	On peut décider imposer le contrôle d'accès aux propriétés d'une class : 
+	- en lecture (get)
+	- en écriture (set)
+
+	Ce qu'il faut retenir : 
+	- On utilise par convention un "_" devant une propriété qu'on souhaite rendre privée
+	- le mot-clé get devant une méthode crée un accesseur de type get
+	  utilisable ensuite comme toute propriété (objet.propriete)
+	- le mot-clé set devant une méthode crée un accesseur de type set
+	  utilisable ensuite comme toute propriété (objet.propriete = valeur)
+	**************************************************************************
+	**************************************************************************
+	*/
+	class User {
+
+		constructor(firstname, lastname) {
+			this._firstname = firstname;
+			this._lastname = lastname;
+		}
+		get fullname() {
+			return "M. " + this._firstname + " " + this._lastname;
+		}
+		set firstname(value) {
+			value.length<2 ? alert("Minimum 2 car.") : this._firstname = value;
+		}
+		set lastname(value) {
+			value.length<3 ? alert("Minimum 3 car.") : this._lastname = value;
+		}
+
+	}
+
+	let fred = new User("Fred", "Lo");
+	console.log(fred.fullname);
+
+	fred.firstname = "Freddy";
+	console.log(fred);
+	//console.log(fred.lastname = "f"); // lance l'alert "Minimum 3 car."
+
+</script>
+</body>
+</html>

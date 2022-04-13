@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ES6-les nouveautés: les paramètres rest</title>
+</head>
+<body>
+	<script>
+		/*
+		** AVANT EN ES5, on devait absolument spécifier les paramètre lors de la déclaration de la fonction
+		*/
+		function additionner(nb1, nb2) {
+			return nb1+nb2;
+		}
+		console.log( additionner(1,3) ); // Retourne 4 dans la console
+
+		/*
+		** En ES6, on peut maintenant passer des valeurs libres dans les paramètres
+		** d'une fonction qu'on exécute
+
+		** En passant des paramètres rest lors de la déclaration avec la syntaxe ...nomDeMaVariable
+		** Notre fonction récupère ces valeurs libres dans un Array
+		*/
+	  	function faireLaSomme(...nombres) {
+			console.log(nombres); // Ici nombres est un array
+			let somme=0;
+			for(let nombre of nombres) {
+				console.log(nombre);
+				somme += nombre;
+			}
+			return somme;
+		}
+		faireLaSomme(1,5,97,42);
+		
+	</script>
+</body>
+</html>

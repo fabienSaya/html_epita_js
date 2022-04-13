@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><title>ES6-les nouveautés: les arrow functions</title></title>
+</head>
+<body>
+<script>
+/*
+** Les fonctions fleches ou arrow functions
+** sont un sucre syntaxique pour déclarer des fonctions  de manière plus concise
+** A noter: On utilise plutôt les fonctions flechées quand on écrit des fonctions anonymes, 
+**			des callbacks par exemple	
+*/
+
+/***********************
+** LA SYNTAXE PRINCIPALE
+************************/
+
+/* 
+**En lieu et place de la syntaxe classique:
+function(arg) {
+	return something;
+}
+/*
+
+/*
+**On écrit la même chose avec les fonctions fléchées
+arg => something;
+
+EXEMPLE simple avec la fonction map()
+La méthode map() crée un nouveau tableau composé des éléments du tableau courant, modifiés par une fonction donnée en argument.
+*/
+let array1 = [1, 4, 9, 16];
+console.log( array1.map( x => x*2 ) ); // retourne [2, 4, 9, 16]
+// EN ES5, on aurait écrit : array1.map(function(x) { return x*2 })
+
+
+/*
+** 	EXEMPLE AVEC LA METHODE FILTER
+**	https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Objets_globaux/Array/filter
+**	Rappel : la méthode filter filtrer les donnée d'un array et retourne un nouvel array
+
+**	fonctionnement: la méthode filter passe en revue chaque valeur de l'array original et vérifie ce que renvoie la fonction de rappel de notre méthode filter() :
+**	-> Si la fonction de rappel renvoi TRUE, alors la valeur est conservée
+**	-> Si la fonction de rappel renvoie FALSE, alors la valeur est sortie
+
+** 	Exercice : utiliser la méthode filter() sur un tableau de fruits, 
+**	pour renvoyer un array qui des fruits contenant la chaîne de caractère "fr"
+**	Vous pouvez utilisez les méthodes : Array.filter, String.inclues(), String.ToLowerCase()
+*/
+
+let fruits = ["Orange", "Fraise", "Pomme", "Framboise", "Banane"];
+result = fruits.filter( fruit => fruit.toLowerCase().includes('fr') );
+console.log(result); // Affiche 'Fraise', 'Framboise'
+
+
+/*
+ ** 2 On l'a vu une fonction fléchée s'utilise plutôt comme fonction anonyme, mais...
+ ** Si on a besoin de donner un nom à une fonction flechée, c'est possible : 
+ **   - on déclare un nom de variable dont la valeur sera notre fonction
+ **   - on utilise des parenthèses vides si notre fonction ne prend pas de paramètre
+ **   - on peut aussi passer un ou plusieurs paramètres dans les parenthèses
+*/
+let direBonjour = ()=>"Hello";
+let direbonjourA = (name)=>"Hello " + name;
+/*
+ EN JS ES5 cela donnerait : 
+ function direBonjour() {
+	return "Hello";
+ }
+ function direBonjourA(name) {
+	return "Hello " + name;
+ }
+*/
+
+
+/*
+ ** 3 gestion du corps de la fonction : une fonction fléchée on est un sucre syntaxique pour écrire une fonction anonyme qui retourne tout de suite une valeur mais on peut également écrire du code à l'intérieur. Dans ce cas, nous utilisons les accolades comme pour une fonction classique
+*/
+// méthode concise, retour implicite
+let func = x => x * x  
+
+// bloc classique, retour explicite
+let otherFunc = (x, y) => { return x + y; }
+
+
+/*
+**	4 que vaut this dans une arrow function ?
+*/
+function classicFunction2() {
+	console.log(this);
+}
+let arrowFunction2 = () => console.log(this);
+
+
+let me = {
+	classicFunction: function() {
+  		console.log(this);
+  	},
+	classicFunctionOut: classicFunction2,
+  
+  	arrowFunction: ()=>console.log(this),
+  	arrowFunctionOut: arrowFunction2,
+  
+}
+
+me.classicFunction(); 	// this vaut l'objet "me"
+me.classicFunctionOut();// this vaut l'objet "me"
+me.arrowFunction();     // this vaut l'objet global window
+me.arrowFunctionOut()	// this vaut l'objet global window
+
+/*
+**	CONCLUSIONS :
+**	- Dans une fonction classique utilisée dans un objet, this vaudra toujours l'objet
+**	- Dans une arrow function, this dépend du contexte dans lequel est déclaré cette function
+**	 VOIR => https://jsfiddle.net/learnlab/bcpqdpf5/
+*/
+ 
+
+/*
+	Autre exemple 
+	Les fonctions fléchées ne créent pas de nouveau contexte, elles utilisent la valeur this de leur contexte. Aussi, si le mot-clé this est utilisé dans le corps de la fonction, le moteur recherchera la référence à cette valeur dans une portée parente. Le code qui suit fonctionne ainsi de la façon attendue car le this utilisé dans setInterval est le thisde la portée de Personne
+*/
+function Personne () {
+  this.age = 0;
+
+  setInterval(() => {
+    console.log(this.age++); 
+    conole.log(this);
+    // |this| fait bien référence à l'objet personne
+  }, 1000);
+}
+var p = new Personne();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+
+	</script>
+
+</body>
+</html>

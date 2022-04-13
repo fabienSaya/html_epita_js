@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L'objet le plus simple : la déclaration littérale</title>
+</head>
+<body>
+
+<script>
+	/* 
+	** Pour créer un objet,
+	** On peut directement le créer comme valeur d'une variable ou d'une constante
+	*/ 
+
+	// Exemple de déclaration d'objet simple
+	const movie = {
+		name:"Il était une fois dans l'Ouest", 
+		duration:122,
+		actors: ["Henry Fonda", "Charles Bronson", "Gabriele Ferzetti"]
+	}
+
+	// On peut alors accédér à ces valeurs
+	// avec la syntaxe: objet.propriete
+	console.log(movie.name); // "Il était une fois dans l'Ouest"
+	console.log(movie.duration); // "Il était une fois dans l'Ouest"
+	console.log(movie.actors); // ["Henry Fonda", "Charles Bronson", "Gabriele Ferzetti"]
+
+	// on peut modifier les valeurs d'un objet 
+	// avec la syntaxe objet.propriete = nouvelleValeur
+	movie.duration=135;
+	console.log(movie);
+
+	/* 
+	** Rappel au sujet des const :
+	** - On ne pourrait pas ici assigner un nouvel objet à une constante déclarée
+	** - En revanche on peut conserver le même objet et modifier ses propriétés 
+	**	 car on peut modifier la valeur d'une constante qui n'est pas immutable
+	*/ 
+
+
+	
+</script>
+</body>
+</html>

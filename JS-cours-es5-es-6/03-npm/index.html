@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Node Package Manager</title>
+</head>
+<body>
+	<h1>Node Package Manager</h1>
+
+	<p>NPM permet de gérer les dépendances de votre projet en ajoutant/supprimant des packages en 1 ligne de commande depuis le terminal.</p>
+	<h2>Les commandes courantes</h2>
+	<ul>
+		<li>npm install nomDuPackage<br><i>pour installer un package</i></li>
+		<li>npm upinstall nomDuPackage<br><i>pour updater un package</i></li>
+		<li>npm uninstall nomDuPackage<br><i>pour désinstaller un package</i></li>
+	</ul>
+
+	<h2>Exemple ici, téléchargeons jQuery dans notre dossier de projet</h2>
+	<ol>
+		<li>Se placer dans le dossier en ligne de commande (depuis le terminal)</li>
+		<li>Taper la commande <strong>npm install jquery</strong></li>
+	</ol>
+	<p>Cette commande va créer :</p>
+	<ul>
+		<li>le fichier package.json qui répertorie les packages et versions disponibles dans votre projet</li>
+		<li>le dossier node_modules qui contiendra le package jquery</li>
+	</ul>
+
+	<p>Vous n'avez plus qu'à l'utiliser ici pour vérifier que jquery est bien disponible, en l'insérant dans votre page.</p>
+
+	<p>Vous savez maintenant gérer les dépendances de votre projet en installant/désinstallant des packages avec NPM.</p>
+	<script src="node_modules/jquery/dist/jquery.min.js"></script>
+
+	<script>
+		$('h1').on('click', function() { alert("OK jQuery est bien chargé !") } );
+
+    </script>
+</body>
+</html>

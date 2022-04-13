@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L'objet via les class - méthodes static : JS ES6</title>
+</head>
+<body>
+
+<script>
+	/**************************************************************************
+	**************************************************************************
+	LES METHODES STATIC
+	
+	- On les utilise quand elles ne sont pas liée à une entité en particulier et qu'il n'est pas logique d'instancier un objet 
+
+	- le mot-clé static devant la déclaration de la fonction rend cette méthode utilisable avec la syntaxe : NomDeLaClass.nomDeLaMethode()
+	**************************************************************************
+	**************************************************************************
+	*/
+	class ComputeScore {
+		static average(...notes) {
+			let totalScore=0;
+			notes.forEach(note => totalScore = totalScore+note);
+			return  totalScore / notes.length;
+		}
+	}
+
+	ComputeScore.average(10,20,15,18); // Affiche 15.75
+
+	/*
+	** Notez ici :
+	** l'utilisation de l'opérateur spread en paramètre de la méthode average() qui permet 
+	** de transformer des valeur libres en array récupérable à l'intérieur de la méthode
+	*/
+</script>
+</body>
+</html>

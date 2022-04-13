@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ES6-les nouveautés: les paramètres par défaut</title>
+</head>
+<body>
+	<script>
+		/*
+		** En ES6, on peut maintenant assigner des valeurs par défaut
+		** aux paramètres des fonctions quand on les déclare
+
+		** Ceci permet d'être moins rigide, 
+		** en n'imposant pas le même nombre de paramètres lors de l'exécution que le nombre 
+		** de paramètres déclarés.
+
+		**Exemple : 
+		*/
+		function getFullName(firstname, lastname="") {
+			console.log(firstname + " " + lastname)
+		}
+		getFullName("Fred");
+
+		// AVANT EN ES5
+		// function getFullName(firstname, lastname) {
+		// 	console.log(firstname + " " + lastname)
+		// }
+		// getFullName("Fred"); // Affiche Fred undefined
+
+		/*
+		** A RETENIR : 
+
+		** 	1 l'ordre est important
+		**	Les paramètres optionnels lors de la déclaration doivent être situés 
+		**  ARPES les paramètres obligatoires,
+		**	et rappelés dans le même ordre lors de l'éxécution
+
+		** 	2 on peut passer des expression pour les paramètres par défaut
+		**  exemple :
+		*/
+	  	function getFullName2(firstname, lastname=3-2) {
+			console.log(firstname + lastname)
+		}
+		getFullName2("Mart");
+		
+	</script>
+</body>
+</html>

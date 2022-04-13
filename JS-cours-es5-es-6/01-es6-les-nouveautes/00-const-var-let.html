@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ES6-les nouveautés: le mot-clé let</title>
+</head>
+<body>
+
+<script>
+/*
+** let / var
+** 
+** + var a une portée globale ou de fonction 
+** + alors que let a une portée de bloc 
+**	 -> un bloc parent n'a pas accès aux variables d'un bloc enfant
+**	 -> un bloc enfant aaccès aux variables d'un bloc parent
+*/
+
+/*
+	**********************************************************
+	EXEMPLE1:  AVEC VAR : PORTEE GLOBALE ET PORTEE DE FONCTION
+	**********************************************************
+*/
+var a = 11;
+function test() {
+	if(true) {
+		var a = 9;
+	} 
+	console.log(a);
+} 
+test(); // Affiche 9 - portée de fonction
+console.log(a); // Affiche 11 - portée globale
+
+
+
+
+/*
+	***********************************
+	EXEMPLE2: AVEC LET : PORTEE DE BLOC
+	Avec let, on ne peut pas accéder à une variable déclarée dans le bloc enfant depuis le bloc parent
+	***********************************
+*/
+function test2() {
+	if(true) {
+		let b = 9;
+	} 
+	console.log(b);
+} 
+test2(); 
+// affiche reference Error: b is undefined
+// Pourquoi ? 
+// Parce que la règle avec let: un bloc parent n'a pas accès aux variables déclarées dans un bloc enfant
+
+
+
+/*
+	**********************
+	TESTONS DONC L'INVERSE
+	EXEMPLE3: Avec let, on peut accéder à une variable du bloc parent depuis un bloc enfant
+	**********************
+*/
+function test3() {
+	let c = 9;
+	if(true) {
+		console.log(c);
+	} 
+} 
+test3(); 
+// Affiche 9
+//Pourquoi ? 
+// Parce que la règle avec let: un bloc enfant a accès aux variables du bloc parent
+
+
+/*
+	****************************************
+	EXEMPLE4: var et let dans une boucle for
+	Rappel: 
+	- var a une portée globale
+	- let a bien une portée de bloc
+	****************************************
+*/
+var i = 42;
+for(var i=0; i<10; i++) {
+	console.log(i);
+}
+console.log(i)
+// Affiche 0,1,2,3,4,5,6,7,8,9,10
+
+let i = 42;
+for(let i=0; i<10; i++) {
+	console.log(i);
+}
+console.log(i);
+// Affiche 0,1,2,3,4,5,6,7,8,9,42
+// Pourquoi ? 
+// i à l'extérieur de la boulce for, et i dans la boucle, sont 2 variables distinctes
+// grâce au principe de portée de bloc
+
+/*
+******************************************
+** DONC QUELLES SONT LES BONNES PRATIQUES ? 
+** 2 pratiques se dégagent: 
+**
+** - 1	la modérée : bannir autant que possible le mot-clé var, 
+**     	utiliser let pour les varaibles et const pour les constantes
+
+** - 2	la radicale : bannir totalement le mot-clé var
+		utiliser uniquement const, et let SI et SEULEMENT SI la valeur de cette variable peut changer
+******************************************
+*/
+	</script>
+</body>
+</html>

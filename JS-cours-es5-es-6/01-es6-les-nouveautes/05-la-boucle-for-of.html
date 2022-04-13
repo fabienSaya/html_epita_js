@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ES6-les nouveautés: la boucle for of</title>
+</head>
+<body>
+<script>
+	/*
+	Les boucles classiques en JS sont :
+	- while / do while (répéter du code TANT QUE une conditions est TRUE)
+	- for (répéter du code un nombre de fois connus à l'avance)
+
+	En JS pour parcourir un Array, on utilise jusqu'à présent la boucle for
+	Dans d'autres langages il existe des boucles adaptées aux Array, comme par exemple la boucle foreach en PHP
+
+	C'est maintenant chose réglée également en JS ES6 avec la boucle for of
+	dédiée aux itérables
+
+	Exemple : Afficher une liste d'après une donnée de type Array
+	*/
+
+	// LES DATAS
+	let products = ['XBOX 360', 'XBOX ONE', 'PLAYSTATION4', 'NINTENDO SWITCH'];
+	/*
+		Maintenant en JS ES6, pour afficher des listes
+		et/ou itérer du code sur les valeurs d'un Array
+		on peut utiliser la boucle "for of" plus concise et plus claire
+
+		SYNTAXE : for (let value of Array) { console.log(value) }	
+	*/
+	for(let product of products) {
+		console.log(product);
+	} // Affiche dans la console : XBOX 360 XBOX ONE PLAYSTATION4 NINTENDO SWITCH 
+
+
+	/*
+		En JS ES5, on aurait écrit
+		for(var i = 0; i<products.length; i++) {
+			console.log(products[i]);
+		}
+	*/
+
+
+
+</script>
+</body>
+</html>

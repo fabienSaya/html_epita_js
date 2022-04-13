@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L'objet via le constructeur et le prototype : JS ES5</title>
+</head>
+<body>
+
+<script>
+	/* 
+	** Pour créer l'équivalent d'une class en ES5,
+	** On utilisait le système méthode constructeur + prototype 
+
+	function User(firstname, lastname, email) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+	}
+	User.prototype.printDetails = function() {
+		console.log(this.firstname + " " + this.lastname);
+		console.log("Email: " + this.email);
+	}
+	*/
+
+	/* 
+	** Maintenant en ES6, on peut utiliser la syntaxe de class
+	** courante dans tous les langages
+	*/
+	class User {
+		constructor(firstname, lastname, email) {
+			this.firstname = firstname;
+			this.lastname = lastname;
+			this.email = email
+		}
+		printDetails() {
+			console.log(this.firstname + " " + this.lastname);
+			console.log("Email: " + this.email);
+		}
+		showThisObject() {
+			console.log(this);
+		}
+	}
+
+	let steve = new User("Steve", "Jobs", "steve.jobs@apple.com")
+	steve.printDetails();
+
+	/*
+	**	NB : le mot-cle this, dans le contexte d'une class 
+	**	fait référence à l'objet qui sera instancié à partir de cette class
+
+	** Par exemple, ici 
+	** si on execute la méthode steve.showThisObject(), 
+	** on peut observer dans la console ce que vaut this, c'est à dire l'objet steve
+	*/
+	steve.showThisObject(); 
+	// Affiche l'objet steve dans la console
+	// this, dans le contexte d'une class fait bien référence à l'objet instancié
+
+	
+</script>
+</body>
+</html>

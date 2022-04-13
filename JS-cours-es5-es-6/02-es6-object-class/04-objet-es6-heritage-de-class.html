@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>L'objet via les class - L'héritage : JS ES6</title>
+</head>
+<body>
+
+<script>
+	// La class parent
+	class User {
+		constructor(firstname, lastname, email) {
+			this.firstname = firstname;
+			this.lastname = lastname;
+			this.email = email
+		}
+		printDetails() {
+			console.log(this.firstname + " " + this.lastname);
+			console.log("Email: " + this.email);
+		}
+	}
+
+	/*
+	** La class enfant hérite de la class parent
+	** donc de ses propriétés et méthodes de class
+	** Pour mettre en place l'héritage, utilisez le mot-clé extends
+	** NB: la methode super() execute constructor de la class parent
+	**     ce qui est beaucoup plus concis
+	*/
+	class Teacher extends User {
+		constructor(firstname, lastname, email, specialities) {
+			super(firstname, lastname, email);
+			this.specialities = specialities;
+		}
+		printSpecialities() {
+			console.log("Spécialités : " + this.specialities);
+		}
+		/* 
+		** Si on veut utiliser une méthode de la class parente
+		** on peut aussi utiliser l'objett super qui fait référence à la class parente
+		*/
+		printTeacherDetails() {
+			super.printDetails();
+			console.log("Spécialités : " + this.specialities);
+		}
+
+	}
+
+
+	let steve = new User("Steve", "Jobs", "steve.jobs@apple.com");
+	let fred = new Teacher("Fred", "Lo", "fred@gmail.com",['js', 'angular', 'ionic']);
+	steve.printDetails();
+	fred.printSpecialities();
+	fred.printTeacherDetails();
+
+	/*
+	**************************************************************************
+	**************************************************************************
+		CE QU'IL FAUT RETENIR DE l'HERITAGE EN JSES6
+		- on hérite avec le mot-clé extends
+		- la méthode super() execute la méthode constructor de la class parent
+		- l'objet super représente la classe parente
+	**************************************************************************
+	**************************************************************************
+	*/
+
+
+	/*
+		Mais ce n'est pas tout
+		on peut aussi utiliser l'héritage avec des objets javascript intégrés (Array, String, Number, ...)
+		Exemple ici avec en mettant en majuscules toutes les valeurs d'un Array
+		(Auparavant en JS ES5, il fallait mettre nos méthodes dans le prototype d'un objet intégré ce qui n'était pas du tout conseillé)
+	*/
+
+	// EXEMPLE en ES6 : héritage d'objet intégrés de type Array
+	class SuperArray extends Array {
+		upperCase() {
+			let newArray = [];
+			this.forEach(element => newArray.push(element.toUpperCase()));
+			return newArray;
+		}
+		getRandomValue() {
+			let min = 0;
+			let max = this.length-1
+			let randomIndex = Math.floor(Math.random() * (max - min + 1)) + min;
+			return this[randomIndex];	
+		}	
+	}
+	/* 
+	 * Maintenant ma nouvelle class superArray dispose des méthodes de l'objets Array Javascript AINSI QUE des 2 méthodes que l'on a nous-même rajouter upperCase() et getRandomValue(). Génial non ?! :)
+	*/
+	const myArray = new SuperArray();
+	myArray.push("Fred");
+	myArray.push("Caroline");
+	myArray.push("Bill");
+	console.log(myArray.upperCase()); // Affiche ["BILL", "CAROLINE", "BILL"]
+	console.log(myArray.getRandomValue()); // Affiche "Fred" ou "Caroline" ou "Bill"
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Spread Operator</title>
+</head>
+<body>
+
+    <script>
+    /*
+    	SPREAD OPERATOR
+        éclate un array en valeurs
+        
+        Syntaxe : 
+        let fruits = ['Fraise', 'Framboise']; 
+        
+    */
+    let fruits = ['fraises', 'framboises', 'oranges']
+    let vegetables = ['carottes', 'pommes de terres']
+    /* 1 COPIE DE TABLEAU */
+    let fruits2 = [...fruits];
+    console.log('COPIE',fruits2 );
+    
+    /* 2 PUSH DES VALUES */
+    // array.push() array.unshift
+    fruits = [...fruits, 'citrons'];
+    console.log('PUSH',fruits );
+    
+    /* 3 concaténation de tableau */ 
+    let panier = [...fruits, ...vegetables];
+    console.log('CONCATENATION',panier );
+    
+        
+    </script>
+    
+</body>
+</html>
