@@ -44,7 +44,7 @@ Dans la partie principale de la page :
 
     <div class="container">
         <button id="toggle-rectangle">cacher/afficher le rectangle</button>
-
+        
         <div class="rectangle"></div>
 
     </div>
@@ -60,12 +60,16 @@ Dans la partie principale de la page :
         let rectangleElt=document.querySelector('div.rectangle');
 
         //2 - fonction d'action modifiant le DOM        
-        function hideUnHide() {
+        function showOrHide() {
             rectangleElt.classList.toggle('hide');
         }
 
         function applyImportant () {
-            rectangleElt.classList.add('important');
+            // this - dans une fonction exécutée par un gestionnaire d'evt, 
+            // this VAUT l'objet HTML sur lequel l'evt a été déclenché
+            // this VAUT rectangleElt 
+            //rectangleElt.classList.add('important');
+            this.classList.add('important');
         }
 
         function backToNormal () {
@@ -79,7 +83,7 @@ Dans la partie principale de la page :
         
         //3 - écouteur d'evt sur elmt HTML
         // exemple (click, dblclick, mouseover, mouseenter, mouseout, mousemove / keydown, keyup)
-        buttonToggleRectangleElt.addEventListener('click', hideUnHide)
+        buttonToggleRectangleElt.addEventListener('click', showOrHide)
         rectangleElt.addEventListener('mouseover',applyImportant);
         rectangleElt.addEventListener('mouseout',backToNormal);
         rectangleElt.addEventListener('dblclick',toggleGood);
